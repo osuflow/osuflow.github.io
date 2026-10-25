@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>osu!flow: search and download osu! beatmaps without leaving the game</title>
+  <meta name="description" content="osu!flow is a free, open-source Windows app that opens a search card over osu! (stable). Find any ranked, loved or qualified map, press Enter, and it is in song select a moment later." />
+  <meta name="theme-color" content="#14111f" />
+  <link rel="canonical" href="https://osuflow.github.io/" />
+  <link rel="icon" type="image/png" href="assets/icon.png" />
+  <link rel="apple-touch-icon" href="assets/icon.png" />
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="osu!flow" />
+  <meta property="og:title" content="osu!flow: find a map, press Enter, keep playing" />
+  <meta property="og:description" content="A free search card that opens over osu! (stable). Search, filter with sliders, hover a map and press Enter: it is in song select a moment later." />
+  <meta property="og:url" content="https://osuflow.github.io/" />
+  <meta property="og:image" content="https://osuflow.github.io/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "osu!flow",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows 10, Windows 11",
+      "softwareVersion": "3.1.0",
+      "license": "https://opensource.org/licenses/MIT",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "downloadUrl": "https://github.com/tempted14/osuflow/releases/latest",
+      "description": "Search and download osu! beatmaps without leaving the game."
+    }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the content</a>
+
+  <header class="top" id="top">
+    <div class="wrap top-in">
+      <a class="brand" href="#top" aria-label="osu!flow, back to the top">
+        <img src="assets/icon.png" width="32" height="32" alt="" />
+        <span>osu!flow</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#try">Try it</a>
+        <a href="#syntax">Search syntax</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/tempted14/osuflow">GitHub</a>
+      </nav>
+      <a class="btn btn-small js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
+      <div class="wrap hero-in">
+        <p class="pill reveal"><span class="pill-dot"></span> New in 3.1: sliders, a cleaner top bar, and hover-to-download</p>
+        <h1 class="reveal">Find a map. Press Enter.<br /><span class="grad">Keep playing.</span></h1>
+        <p class="lead reveal">osu!flow opens a frosted-glass search card right over osu!, finds any ranked, loved or qualified map, downloads it, and hands it to song select. No browser, no alt-tab.</p>
+        <div class="cta reveal">
+          <a class="btn btn-big js-download" href="https://github.com/tempted14/osuflow/releases/latest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-5-5m5 5 5-5M5 20h14" /></svg>
+            Download for Windows
+          </a>
+          <a class="btn btn-ghost btn-big" href="https://github.com/tempted14/osuflow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" /></svg>
+            View on GitHub
+          </a>
+        </div>
+        <p class="meta reveal"><span class="js-version">v3.1.0</span> · Windows 10 &amp; 11 · <span class="js-size">1.9 MB</span> · free and open source (MIT) · for osu! stable</p>
+
+        <figure class="frame hero-shot reveal">
+          <img src="assets/img/app-overlay.webp" width="1180" height="760" alt="The osu!flow search card over osu!, listing maps with cover art, difficulty dots and a download button. A map is lifted under the pointer and a hint reads: Enter, download. Space, preview." fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="At a glance">
+      <div class="wrap strip-in">
+        <p><strong>No account</strong> to make or sign in to</p>
+        <p><strong>No telemetry.</strong> No ads, no tracking</p>
+        <p><strong>Tiny</strong> installer, lives in the tray</p>
+        <p><strong>Open source</strong> under the MIT licence</p>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <header class="head reveal">
+          <h2>Three steps, zero alt-tabs</h2>
+          <p>osu!flow sits quietly in your system tray until you need it.</p>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="num">1</span>
+            <h3>Press <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>D</kbd></h3>
+            <p>In osu!, in a map, anywhere. A glass search card opens over the game, with the first results already waiting. The shortcut is yours to change.</p>
+          </li>
+          <li class="step reveal">
+            <span class="num">2</span>
+            <h3>Search, filter, slide</h3>
+            <p>Type a name, paste a beatmap link, or use osu!'s own search syntax. Narrow by genre, language and difficulty, or drag a slider for AR, stars or BPM.</p>
+          </li>
+          <li class="step reveal">
+            <span class="num">3</span>
+            <h3>Press <kbd>Enter</kbd></h3>
+            <p>Rest the pointer on a map and press Enter. osu!flow downloads it and hands it to osu! the way double-clicking an <code>.osz</code> would. A moment later it is in song select.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section alt" id="features">
+      <div class="wrap">
+        <header class="head reveal">
+          <h2>Everything osu!direct does, none of the detour</h2>
+          <p>Built for osu! (stable) on Windows, and shaped by how people really search for maps.</p>
+        </header>
+        <div class="grid">
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" /></svg></span>
+            <h3>Results before you ask</h3>
+            <p>The first search runs when osu!flow starts, so the card opens with maps already on screen. Going back to a search you just made is instant.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico range" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" /><circle cx="9" cy="8" r="2.4" /><circle cx="15" cy="16" r="2.4" /></svg></span>
+            <h3>Sliders for the numbers</h3>
+            <p>Stars, AR, CS, OD, HP, BPM and length open as two-handle sliders in one fixed area, so opening or closing one never moves anything else.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4" /></svg></span>
+            <h3>Filters like the website</h3>
+            <p>Difficulty, genre, language, video, storyboard, featured artists, spotlights, hide installed. Applied instantly, remembered next time.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" /></svg></span>
+            <h3>osu!'s search syntax</h3>
+            <p><code>stars&gt;5 ar&lt;=9.5 bpm=180..200 keys=4 mapper=name</code>. Conditions show as chips you can click away, and every one must hold on the same difficulty.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3v13l4-3 3 6 3-1.5-3-6 5-.5L5 3Z" /></svg></span>
+            <h3>Hover, then Enter</h3>
+            <p>No click needed: rest the pointer (or a pen, on a tablet) on a map and press Enter to download, Space to preview. Typing a search then pressing Enter never grabs a map by accident.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16" /></svg></span>
+            <h3>Two mirrors, one result</h3>
+            <p>Downloads try catboy.best first, which was several times quicker than osu.direct when we measured, and fall back to osu.direct if a mirror is down.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.4 3.4 7.7 8 9 4.6-1.3 8-4.6 8-9V6l-8-3Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+            <h3>A careful hand-off</h3>
+            <p>Maps go in through Windows' own <code>.osz</code> association, exactly like double-clicking the file. It waits for the download to settle and never launches osu! while a dialog is open.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3" /><path d="M8 21h8" /></svg></span>
+            <h3>Made for Windows 11</h3>
+            <p>Acrylic glass, rounded corners, Fluent-style menus and a crisp keyboard focus ring. On Windows 10 it falls back to solid colours.</p>
+          </article>
+          <article class="card reveal">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11V8a7 7 0 0 1 14 0v3M5 11h14v10H5V11Z" /></svg></span>
+            <h3>Private by design</h3>
+            <p>No account, no telemetry, nothing sent anywhere except the mirrors you are downloading from. It never touches osu!'s memory or network.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="try">
+      <div class="wrap try">
+        <div class="try-text reveal">
+          <h2>Try the part you will use most</h2>
+          <p>Rest your pointer on a map below and press <kbd>Enter</kbd>. That is the whole workflow: no click, no confirmation, and the map is on its way.</p>
+          <p class="note">This is a small simulation with invented maps, nothing is downloaded. On a phone, tap the download button instead.</p>
+        </div>
+        <div class="demo reveal" id="demo" role="group" aria-label="Interactive demo: rest the pointer on a map and press Enter to download it">
+          <div class="demo-bar" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+            <span>Search by title, artist or mapper, or paste a link</span>
+            <span class="esc">esc</span>
+          </div>
+          <ul class="demo-list">
+            <li class="demo-row" tabindex="0" data-title="Midnight Circuit" style="--h1: 268; --h2: 308">
+              <span class="demo-cover" aria-hidden="true"></span>
+              <span class="demo-text"><strong>Midnight Circuit</strong><span class="demo-sub">Aurora Vale · mapped by kiri</span><span class="demo-facts">★ 1.7–3.6 · 3:09 · 172 bpm</span></span>
+              <button class="demo-get" type="button" aria-label="Download Midnight Circuit"><span class="demo-icon" aria-hidden="true"></span></button>
+            </li>
+            <li class="demo-row" tabindex="0" data-title="Glass Tide" style="--h1: 196; --h2: 246">
+              <span class="demo-cover" aria-hidden="true"></span>
+              <span class="demo-text"><strong>Glass Tide</strong><span class="demo-sub">Lumen &amp; Foxglove · mapped by mochi</span><span class="demo-facts">★ 2.3–5.5 · 3:34 · 148 bpm</span></span>
+              <button class="demo-get" type="button" aria-label="Download Glass Tide"><span class="demo-icon" aria-hidden="true"></span></button>
+            </li>
+            <li class="demo-row" tabindex="0" data-title="Afterglow Drive" style="--h1: 322; --h2: 4">
+              <span class="demo-cover" aria-hidden="true"></span>
+              <span class="demo-text"><strong>Afterglow Drive</strong><span class="demo-sub">Neon Orchard · mapped by vantage</span><span class="demo-facts">★ 3.4–8.1 · 3:23 · 186 bpm</span></span>
+              <button class="demo-get" type="button" aria-label="Download Afterglow Drive"><span class="demo-icon" aria-hidden="true"></span></button>
+            </li>
+          </ul>
+          <div class="demo-hint" aria-live="polite"><span class="demo-hint-text">Rest the pointer on a map, then press Enter</span></div>
+          <button class="demo-reset" type="button" hidden>Start over</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="look">
+      <div class="wrap">
+        <header class="head reveal">
+          <h2>A closer look</h2>
+          <p>Every screenshot here is the real app, showing invented maps.</p>
+        </header>
+        <div class="shots">
+          <figure class="frame reveal wide">
+            <img src="assets/img/app-filters.webp" width="1180" height="760" loading="lazy" alt="The Filters panel open: blue options for Stars, AR, CS, OD, HP, BPM and Length, with the Stars, AR and BPM sliders open in a fixed area at the bottom." />
+            <figcaption><strong>Blue options open a slider.</strong> All open sliders share one fixed area at the bottom of the panel, so nothing jumps when you open or close one.</figcaption>
+          </figure>
+          <figure class="frame reveal">
+            <img src="assets/img/app-sort.webp" width="1180" height="560" loading="lazy" alt="The top bar with the Sort menu open, a Windows 11 style list with one choice marked by a small accent bar." />
+            <figcaption><strong>A top bar that feels like Windows 11.</strong> A switch whose highlight glides, and menus you can drive entirely from the keyboard.</figcaption>
+          </figure>
+          <figure class="frame reveal narrow">
+            <img src="assets/img/app-settings.webp" width="560" height="420" loading="lazy" alt="The osu!flow settings window: where osu! was found, the shortcut, skip videos, start with Windows and beatmap links, each in its own card." />
+            <figcaption><strong>Settings you will rarely need.</strong> The shortcut, skipping videos, starting with Windows, and optional beatmap links.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="syntax">
+      <div class="wrap syntax">
+        <header class="head left reveal">
+          <h2>Search the way you already know</h2>
+          <p>osu!flow understands the search syntax from the osu! website and osu!lazer, and the sliders write the same conditions. Combine as many as you like.</p>
+        </header>
+        <div class="table reveal" role="table" aria-label="Search conditions">
+          <div class="tr th" role="row"><span role="columnheader">Type</span><span role="columnheader">It finds</span></div>
+          <div class="tr" role="row"><code role="cell">stars&gt;5</code><span role="cell">a difficulty above 5 stars</span></div>
+          <div class="tr" role="row"><code role="cell">ar&lt;=9.5 od&gt;8</code><span role="cell">approach rate and overall difficulty (also <code>cs</code>, <code>hp</code>)</span></div>
+          <div class="tr" role="row"><code role="cell">bpm=180..200</code><span role="cell">a range, whichever way round</span></div>
+          <div class="tr" role="row"><code role="cell">length&lt;3m</code><span role="cell">seconds, <code>m</code>, <code>h</code> or <code>3:30</code></span></div>
+          <div class="tr" role="row"><code role="cell">keys=4</code><span role="cell">mania maps with that many keys</span></div>
+          <div class="tr" role="row"><code role="cell">mapper="some name"</code><span role="cell">or <code>artist=</code>, <code>title=</code>; quote names with spaces</span></div>
+          <div class="tr" role="row"><code role="cell">osu.ppy.sh/s/…</code><span role="cell">paste a beatmap link or ID to jump straight to that map</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="faq">
+      <div class="wrap faq">
+        <header class="head reveal">
+          <h2>Questions people ask</h2>
+        </header>
+        <div class="qa reveal">
+          <details>
+            <summary>Does it work with osu!lazer?</summary>
+            <p>No. osu!flow is built for <strong>osu! (stable)</strong>, the classic client. It opens over the game window and hands maps over the way stable expects them.</p>
+          </details>
+          <details>
+            <summary>Is it safe? Why does Windows warn me?</summary>
+            <p>osu!flow is open source, so anyone can read what it does. It never touches osu!'s memory or network, and it imports maps exactly like double-clicking an <code>.osz</code> file. The installer is not code-signed yet, so Windows SmartScreen may say it protects your PC: choose <strong>More info</strong>, then <strong>Run anyway</strong>. Every release lists the installer's SHA-256 so you can check your download.</p>
+          </details>
+          <details>
+            <summary>Do I need an osu! account, an API key or anything else?</summary>
+            <p>No. There is nothing to sign in to. Maps come from the public beatmap mirrors catboy.best and osu.direct.</p>
+          </details>
+          <details>
+            <summary>What does it connect to?</summary>
+            <p>The two mirrors above to search and download the maps you ask for, and osu!'s own servers (assets.ppy.sh and b.ppy.sh) for cover images and previews. There is no telemetry and no analytics.</p>
+          </details>
+          <details>
+            <summary>The card doesn't show over my game.</summary>
+            <p>Exclusive fullscreen hides every overlay. In osu!, switch to <strong>Borderless</strong> or <strong>Windowed</strong> in Options, Graphics. osu!flow's settings window warns you when it spots exclusive fullscreen.</p>
+          </details>
+          <details>
+            <summary>What can't it do?</summary>
+            <p>Anything that needs your osu! account: rank achieved, played or unplayed, your favourites, subscribed mappers, recommended difficulty. The beatmap mirrors don't know those things.</p>
+          </details>
+          <details>
+            <summary>How do I change the shortcut, or remove osu!flow?</summary>
+            <p>Open Settings from the tray icon, click the shortcut box and press the keys you want. To remove it, use Windows' <strong>Installed apps</strong>; that also removes the start-with-Windows entry and the link handler if you turned them on.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final" id="download">
+      <div class="glow glow-c" aria-hidden="true"></div>
+      <div class="wrap final-in reveal">
+        <img src="assets/icon.png" width="84" height="84" alt="" />
+        <h2>Spend less time searching, more time playing</h2>
+        <p>Free, open source, and about <span class="js-size">2 MB</span> to download. It installs for your user only, so no administrator rights are needed.</p>
+        <div class="cta center">
+          <a class="btn btn-big js-download" href="https://github.com/tempted14/osuflow/releases/latest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-5-5m5 5 5-5M5 20h14" /></svg>
+            Download <span class="js-version">v3.1.0</span> for Windows
+          </a>
+          <a class="btn btn-ghost btn-big" href="https://github.com/tempted14/osuflow/releases">All releases</a>
+        </div>
+        <p class="verify">To verify your download, run <code>Get-FileHash .\osu.flow_*_x64-setup.exe</code> in PowerShell and compare it with the SHA-256 in the release notes.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div>
+        <a class="brand" href="#top"><img src="assets/icon.png" width="28" height="28" alt="" /><span>osu!flow</span></a>
+        <p class="legal">osu!flow is an independent project. It is not affiliated with or endorsed by ppy Pty Ltd. osu! and its assets belong to ppy; none of them are included here. The maps shown on this site are invented.</p>
+      </div>
+      <nav class="foot-links" aria-label="Project links">
+        <a href="https://github.com/tempted14/osuflow">Source code</a>
+        <a href="https://github.com/tempted14/osuflow/releases">Releases</a>
+        <a href="https://github.com/tempted14/osuflow/issues">Report a problem</a>
+        <a href="https://github.com/tempted14/osuflow/blob/main/LICENSE">MIT licence</a>
+        <a href="https://github.com/tempted14/osuflow#code-signing-policy">Code signing policy</a>
+        <a href="https://github.com/tempted14/osuflow#privacy">Privacy</a>
+      </nav>
+    </div>
+    <p class="wrap foot-note">This page sets no cookies and has no trackers. Its only request is to GitHub's public API, to show the latest version number.</p>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

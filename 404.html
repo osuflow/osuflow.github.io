@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found · osu!flow</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#14111f" />
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+      background: radial-gradient(60rem 30rem at 50% -10%, rgba(255, 102, 170, 0.22), transparent 60%), #14111f;
+      color: #f5f4fb; font: 400 1rem/1.6 "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif; text-align: center;
+    }
+    .ring { width: 96px; height: 96px; margin: 0 auto 28px; }
+    h1 { margin: 0; font: 700 clamp(2rem, 6vw, 3rem)/1.1 "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif; letter-spacing: -0.03em; }
+    p { margin: 14px auto 0; max-width: 30rem; color: rgba(245, 244, 251, 0.74); }
+    a.btn {
+      display: inline-block; margin-top: 28px; padding: 12px 24px; border-radius: 13px; text-decoration: none; font-weight: 650;
+      background: linear-gradient(135deg, #ff66aa, #a77bff); color: #1a1022; box-shadow: 0 8px 28px rgba(255, 102, 170, 0.3);
+    }
+    a.btn:hover { filter: brightness(1.08); }
+    a:focus-visible { outline: 2px solid #ff66aa; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="ring" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff66aa" /><stop offset="1" stop-color="#a77bff" /></linearGradient></defs>
+      <circle cx="48" cy="48" r="34" stroke="url(#g)" stroke-width="10" />
+      <circle cx="48" cy="48" r="13" fill="url(#g)" />
+    </svg>
+    <h1>That map isn't here</h1>
+    <p>The page you were looking for doesn't exist, or it has moved. The osu!flow home page has everything.</p>
+    <a class="btn" href="/">Back to osu!flow</a>
+  </main>
+</body>
+</html>

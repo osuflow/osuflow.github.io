@@ -12,7 +12,7 @@ index.html            the page
 404.html              the not-found page (self-contained)
 assets/style.css      all styles
 assets/app.js         scroll reveal, the latest version, and the hover-and-Enter demo
-assets/img/           screenshots of the real app, rendered with invented maps and abstract covers
+assets/img/           screenshots of the real app, showing popular ranked maps and their original covers
 assets/icon.png       the app icon;  assets/og.png  the social-preview image
 robots.txt, sitemap.xml, .nojekyll
 ```
@@ -33,9 +33,9 @@ the same files also work under a project path.
 
 The version number and download link update themselves from the latest GitHub release. By hand, only
 the "New in 3.x" line under the hero and `softwareVersion` in the page's structured data change when
-there is a release worth announcing. The screenshots come from the app's own UI; the maps in them are
-invented, so no one's cover art is shown.
+there is a release worth announcing. The screenshots come from the app's own UI, showing real ranked maps. The reproducible screenshot
+tooling and curated fixture live in the app repository under `tools/headless/`.
 
 ## Licence
 
-[MIT](LICENSE). osu! and its assets belong to ppy; none are used here.
+[MIT](LICENSE). Cover art, titles and artists in screenshots belong to their respective owners (ppy, mappers, artists); osu!flow includes none of them.

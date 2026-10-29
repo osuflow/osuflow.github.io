@@ -3,6 +3,13 @@
   "use strict";
 
   // Include published previews: the user should always get the newest available version.
+  const currentOrNewer = (tag) => {
+    const parts = typeof tag === "string" && /^v?(\d+)\.(\d+)\.(\d+)(?:[-+].*)?$/.exec(tag);
+    if (!parts) return false;
+    const version = parts.slice(1).map(Number), pinned = [3, 4, 0];
+    for (let i = 0; i < 3; i++) { if (version[i] !== pinned[i]) return version[i] > pinned[i]; }
+    return true;
+  };
   const api = "https://api.github.com/repos/tempted14/osuflow/releases?per_page=10";
   const validAsset = (asset) => {
     if (!asset || typeof asset.name !== "string" || typeof asset.browser_download_url !== "string" || !(asset.size > 0)) return false;
@@ -12,16 +19,18 @@
   fetch(api, { headers: { Accept: "application/vnd.github+json" } })
     .then((response) => response.ok ? response.json() : null)
     .then((releases) => {
-      const candidates = (Array.isArray(releases) ? releases : []).filter((release) => release && !release.draft && !release.isDraft);
+      const candidates = (Array.isArray(releases) ? releases : []).filter((release) => release && !release.draft && !release.isDraft && currentOrNewer(release.tag_name));
       const newest = candidates.find((release) => asset(release, /x64-setup\.exe$/i));
       const installer = asset(newest, /x64-setup\.exe$/i);
       if (installer) {
+        document.querySelectorAll(".js-test-download-note").forEach((el) => { el.hidden = true; });
         if (typeof newest.tag_name === "string") document.querySelectorAll(".js-version").forEach((el) => { el.textContent = newest.tag_name; });
         document.querySelectorAll("a.js-download").forEach((link) => { link.href = installer.browser_download_url; });
         document.querySelectorAll(".js-size").forEach((el) => { el.textContent = (installer.size / 1048576).toFixed(1) + " MB"; });
       }
       const release = candidates.find((release) => asset(release, /(?:amd64|x86_64)\.AppImage$/i) || asset(release, /amd64\.deb$/i));
-      if (!release) return; // No Linux buttons until an actual published asset exists.
+      if (!release) return; // Keep the verified 3.4 test-build links until a public release exists.
+      document.querySelectorAll('.js-linux-artifact, .js-macos-arm, .js-macos-intel').forEach((link) => { link.hidden = true; });
       const show = (selector, found) => document.querySelectorAll(selector).forEach((link) => { if (found) { link.href = found.browser_download_url; link.hidden = false; } });
       show('.js-linux-appimage', asset(release, /(?:amd64|x86_64)\.AppImage$/i));
       show('.js-linux-deb', asset(release, /amd64\.deb$/i));
@@ -29,7 +38,7 @@
       show('.js-macos-arm', asset(release, /(?:aarch64|arm64)\.dmg$/i));
       show('.js-macos-intel', asset(release, /x64\.dmg$/i));
       document.querySelectorAll('.js-preview-version').forEach((el) => { el.textContent = typeof release.tag_name === "string" ? release.tag_name : ""; });
-      document.querySelectorAll('.js-preview-release').forEach((link) => { link.href = "https://github.com/tempted14/osuflow/releases/tag/" + encodeURIComponent(release.tag_name); });
+      document.querySelectorAll('.js-preview-release').forEach((link) => { link.href = "https://github.com/tempted14/osuflow/releases/tag/" + encodeURIComponent(release.tag_name); link.textContent = "Release notes and SHA-256 checksums"; });
       document.getElementById('experimental-downloads').hidden = false;
     }).catch(() => undefined);
 

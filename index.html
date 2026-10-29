@@ -29,7 +29,7 @@
       "softwareVersion": "3.4.0",
       "license": "https://opensource.org/licenses/MIT",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "downloadUrl": "https://github.com/tempted14/osuflow/releases/tag/v3.4.0",
+      "downloadUrl": "https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877048938",
       "description": "Search and download osu! beatmaps without leaving the game."
     }
   </script>
@@ -51,7 +51,7 @@
         <a href="#faq">FAQ</a>
         <a href="https://github.com/tempted14/osuflow">GitHub</a>
       </nav>
-      <a class="btn btn-small js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download</a>
+      <a class="btn btn-small js-download" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877048938">Download</a>
     </div>
   </header>
 
@@ -61,7 +61,7 @@
         <h1>Search and download osu! beatmaps without leaving the game</h1>
         <p class="lead">osu!flow is a small desktop app for osu! stable and osu!lazer. Press a shortcut to open search, then pick a map to download and send to your selected game client.</p>
         <p class="cta">
-          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download for Windows</a>
+          <a class="btn js-download" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877048938">Download for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow">Source on GitHub</a>
         </p>
         <p class="meta"><span class="js-version">v3.4.0</span> · Windows 10 and 11 · <span class="js-size">1.9 MB</span> · free, MIT licence · no account needed</p>
@@ -207,23 +207,24 @@
         <h2>Download</h2>
         <p>Free and open source. The latest Windows installer is about <span class="js-size">2 MB</span> and installs for your user only, with no administrator rights needed.</p>
         <p class="cta">
-          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download <span class="js-version">v3.4.0</span> for Windows</a>
+          <a class="btn js-download" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877048938">Download <span class="js-version">v3.4.0</span> for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow/releases">All releases</a>
         </p>
-        <p class="note">Version 3.4.0 adds a choice of osu! stable or osu!lazer. Lazer imports and Linux/macOS support are experimental; real-game testing is still pending.</p>
-        <section class="preview-downloads" id="experimental-downloads" hidden aria-label="Experimental platform downloads">
-          <h3>Experimental builds <span class="js-preview-version"></span></h3>
+        <p class="note"><span class="js-test-download-note">These 3.4.0 test builds download as ZIP files from GitHub Actions. GitHub sign-in is required; unzip the download before opening the installer. </span>Version 3.4.0 adds a choice of osu! stable or osu!lazer. Lazer imports and Linux/macOS support are experimental; real-game testing is still pending.</p>
+        <section class="preview-downloads" id="experimental-downloads" aria-label="Experimental platform downloads">
+          <h3>Experimental builds <span class="js-preview-version">v3.4.0</span></h3>
           <p>Linux AppImage and Debian packages, with a choice of osu! stable through osu-winello or native osu!lazer. Real-game testing is still pending. These builds are unsigned.</p>
           <div class="platform-downloads">
+            <a class="btn js-linux-artifact" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877947151">Linux AppImage + .deb · x64</a>
             <a class="btn js-linux-appimage" hidden>Linux AppImage · x64</a>
             <a class="btn btn-plain js-linux-deb" hidden>Linux .deb · x64</a>
             <a class="btn btn-plain js-preview-windows" hidden>Windows client preview</a>
-            <a class="btn btn-plain js-macos-arm" hidden>macOS Apple Silicon preview</a>
-            <a class="btn btn-plain js-macos-intel" hidden>macOS Intel preview</a>
+            <a class="btn btn-plain js-macos-arm" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12878015693">macOS Apple Silicon preview</a>
+            <a class="btn btn-plain js-macos-intel" href="https://github.com/tempted14/osuflow/actions/runs/40828208869/artifacts/12877877049">macOS Intel preview</a>
           </div>
-          <p class="note"><a class="js-preview-release" href="https://github.com/tempted14/osuflow/releases">Preview notes and SHA-256 checksums</a> · <a href="https://github.com/tempted14/osuflow/blob/v3.4.0/docs/client-setup.md">Setup and limitations</a>. Linux AppImage: make it executable before opening. Debian packages use your package manager. macOS: allow a trusted download under Privacy &amp; Security → Open Anyway.</p>
+          <p class="note"><a class="js-preview-release" href="https://github.com/tempted14/osuflow/actions/runs/40828208869">Build details and test results</a> · <a href="https://github.com/tempted14/osuflow/blob/v3.4.0/docs/client-setup.md">Setup and limitations</a>. Linux AppImage: make it executable before opening. Debian packages use your package manager. macOS: allow a trusted download under Privacy &amp; Security → Open Anyway.</p>
         </section>
-        <p class="note">To check your download, run <code>Get-FileHash .\osu.flow_*_x64-setup.exe</code> in PowerShell and compare it with the SHA-256 in the release notes.</p>
+        <p class="note">To check your download, run <code>Get-FileHash .\osu*flow_*_x64-setup.exe</code> in PowerShell and compare it with the <a href="assets/checksums-3.4.0.txt">3.4.0 test-build SHA-256 checksums</a>.</p>
       </div>
     </section>
   </main>

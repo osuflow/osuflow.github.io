@@ -3,17 +3,20 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const source = fs.readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
-const selectors = ['.js-version', 'a.js-download', '.js-size', '.js-linux-appimage', '.js-linux-deb', '.js-preview-windows', '.js-macos-arm', '.js-macos-intel', '.js-preview-version', '.js-preview-release'];
+const selectors = ['.js-version', 'a.js-download', '.js-size', '.js-linux-appimage', '.js-linux-deb', '.js-linux-artifact', '.js-test-download-note', '.js-preview-windows', '.js-macos-arm', '.js-macos-intel', '.js-preview-version', '.js-preview-release'];
+const build = 'https://github.com/tempted14/osuflow/actions/runs/40828208869';
 const file = (name, tag) => ({ name, size: 2097152, browser_download_url: `https://github.com/tempted14/osuflow/releases/download/${tag}/${name}` });
 const stable = { tag_name: 'v3.3.0', draft: false, prerelease: false, assets: [file('osu.flow_3.3.0_x64-setup.exe', 'v3.3.0')] };
 const preview = { tag_name: 'v3.4.0', draft: false, prerelease: true, assets: [file('osu.flow_3.4.0_x64-setup.exe', 'v3.4.0'), file('osu.flow_3.4.0_amd64.AppImage', 'v3.4.0'), file('osu.flow_3.4.0_amd64.deb', 'v3.4.0'), file('osu.flow_3.4.0_aarch64.dmg', 'v3.4.0'), file('osu.flow_3.4.0_x64.dmg', 'v3.4.0')] };
 async function run(latest, list, offline = false) {
-  const nodes = Object.fromEntries(selectors.map((selector) => [selector, [{ hidden: true, textContent: '', href: 'https://github.com/tempted14/osuflow/releases/tag/v3.4.0' }]]));
+  const nodes = Object.fromEntries(selectors.map((selector) => [selector, [{ hidden: true, textContent: '', href: build }]]));
   nodes['.js-version'][0].textContent = 'v3.4.0';
-  const section = { hidden: true };
+  nodes['a.js-download'][0].href = build+'/artifacts/12877048938';
+  for (const key of ['.js-linux-artifact','.js-macos-arm','.js-macos-intel','.js-test-download-note']) nodes[key][0].hidden=false;
+  const section = { hidden: false };
   vm.runInNewContext(source, {
     URL, encodeURIComponent,
-    document: { querySelectorAll: (selector) => nodes[selector] ?? [], getElementById: (id) => id === 'experimental-downloads' ? section : null },
+    document: { querySelectorAll: (selector) => selector.split(',').flatMap(key=>nodes[key.trim()]??[]), getElementById: (id) => id === 'experimental-downloads' ? section : null },
     fetch: async (url) => { if (offline) throw new Error('offline'); return { ok: true, json: async () => url.endsWith('/latest') ? latest : list }; },
   });
   await new Promise((resolve) => setTimeout(resolve, 0));
@@ -31,15 +34,15 @@ check('same-version Windows preview is not duplicated', both.node('.js-preview-w
 check('Mac architectures are separate', both.node('.js-macos-arm').href.endsWith('aarch64.dmg') && both.node('.js-macos-intel').href.endsWith('x64.dmg'));
 
 const old = await run(stable, [stable]);
-check('no Linux button before an asset exists', old.section.hidden && old.node('.js-linux-appimage').hidden && old.node('.js-linux-deb').hidden);
+check('no direct Linux release button before an asset exists; verified test builds stay available', !old.section.hidden && old.node('.js-linux-appimage').hidden && old.node('.js-linux-deb').hidden && !old.node('.js-linux-artifact').hidden);
 const draft = await run(stable, [{ ...preview, draft: true }, stable]);
-check('draft builds are never advertised', draft.section.hidden);
+check('draft release assets are never advertised', draft.node('a.js-download').href.includes('/artifacts/') && !draft.node('.js-linux-artifact').hidden);
 const broken = await run(null, null, true);
-check('offline lookup preserves the newest pinned release instead of old stable', broken.node('a.js-download').href.endsWith('/releases/tag/v3.4.0') && broken.node('.js-version').textContent === 'v3.4.0' && broken.section.hidden);
+check('offline lookup preserves the newest verified build instead of old stable', broken.node('a.js-download').href.endsWith('/artifacts/12877048938') && broken.node('.js-version').textContent === 'v3.4.0' && !broken.section.hidden);
 const invalid = await run(stable, [{ ...preview, assets: preview.assets.map((asset) => ({ ...asset, browser_download_url: 'javascript:alert(1)' })) }]);
-check('unsafe download URLs are rejected', invalid.section.hidden);
+check('unsafe download URLs are rejected', invalid.node('a.js-download').href.includes('/artifacts/') && invalid.node('.js-linux-appimage').hidden);
 const foreign = await run(stable, [{ ...preview, assets: preview.assets.map((asset) => ({ ...asset, browser_download_url: 'https://github.com/someone/else/releases/download/v1/file.AppImage' })) }]);
-check('another repository cannot supply the installer', foreign.section.hidden);
+check('another repository cannot supply the installer', foreign.node('a.js-download').href.includes('/artifacts/') && foreign.node('.js-linux-appimage').hidden);
 const current = await run({ ...preview, prerelease: false }, [{ ...preview, prerelease: false }]);
 check('a future stable release keeps Linux alongside Windows', !current.section.hidden && current.node('a.js-download').href.includes('/v3.4.0/'));
 check('same-version stable Windows is not duplicated', current.node('.js-preview-windows').hidden);

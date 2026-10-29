@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>osu!flow: search and download osu! beatmaps without leaving the game</title>
-  <meta name="description" content="osu!flow is a free, open-source Windows app that opens a search card over osu! (stable). Find a ranked, loved or qualified map, press Enter, and it is in song select a moment later." />
+  <meta name="description" content="osu!flow is a free, open-source desktop app for osu! stable and osu!lazer. Search, filter, preview and download maps. Windows, with experimental Linux and macOS builds." />
   <meta name="theme-color" content="#17171a" />
   <link rel="canonical" href="https://osuflow.github.io/" />
   <link rel="icon" type="image/png" href="assets/icon.png" />
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="osu!flow" />
   <meta property="og:title" content="osu!flow: search and download osu! beatmaps without leaving the game" />
-  <meta property="og:description" content="A free search card that opens over osu! (stable). Filter with sliders, hover a map and press Enter to download it." />
+  <meta property="og:description" content="Search, preview and download maps for osu! stable or osu!lazer. Version 3.4.0 adds experimental Linux and macOS builds." />
   <meta property="og:url" content="https://osuflow.github.io/" />
   <meta property="og:image" content="https://osuflow.github.io/assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -25,11 +25,11 @@
       "@type": "SoftwareApplication",
       "name": "osu!flow",
       "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Windows 10, Windows 11",
-      "softwareVersion": "3.3.0",
+      "operatingSystem": "Windows 10, Windows 11, Linux (experimental), macOS (experimental)",
+      "softwareVersion": "3.4.0",
       "license": "https://opensource.org/licenses/MIT",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "downloadUrl": "https://github.com/tempted14/osuflow/releases/latest",
+      "downloadUrl": "https://github.com/tempted14/osuflow/releases/tag/v3.4.0",
       "description": "Search and download osu! beatmaps without leaving the game."
     }
   </script>
@@ -51,7 +51,7 @@
         <a href="#faq">FAQ</a>
         <a href="https://github.com/tempted14/osuflow">GitHub</a>
       </nav>
-      <a class="btn btn-small js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download</a>
+      <a class="btn btn-small js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download</a>
     </div>
   </header>
 
@@ -59,12 +59,12 @@
     <section class="hero">
       <div class="wrap">
         <h1>Search and download osu! beatmaps without leaving the game</h1>
-        <p class="lead">osu!flow is a small Windows app for osu! (stable). Press a shortcut and a search card opens over the game. Pick a map, and a moment later it is in song select.</p>
+        <p class="lead">osu!flow is a small desktop app for osu! stable and osu!lazer. Press a shortcut to open search, then pick a map to download and send to your selected game client.</p>
         <p class="cta">
-          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download for Windows</a>
+          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow">Source on GitHub</a>
         </p>
-        <p class="meta"><span class="js-version">v3.3.0</span> · Windows 10 and 11 · <span class="js-size">1.9 MB</span> · free, MIT licence · no account needed</p>
+        <p class="meta"><span class="js-version">v3.4.0</span> · Windows 10 and 11 · <span class="js-size">1.9 MB</span> · free, MIT licence · no account needed</p>
         <figure class="shot">
           <img src="assets/img/app-overlay.webp" width="1180" height="760" alt="The osu!flow search card over osu!: a list of maps with cover art, difficulty dots and a download button. One map is highlighted under the pointer, with a hint reading Enter, download. Space, preview." fetchpriority="high" />
         </figure>
@@ -173,7 +173,7 @@
         <h2>FAQ</h2>
         <details>
           <summary>Does it work with osu!lazer?</summary>
-          <p>Version 3.3 and earlier use osu! stable. The 3.4 preview adds a Game client choice for stable or native osu!lazer, with the same search, previews, filters and downloads. Linux stable integrates with <a href="https://github.com/NelloKudo/osu-winello">osu-winello</a>. See the <a href="https://github.com/tempted14/osuflow/blob/main/docs/client-setup.md">setup guide and testing limits</a>.</p>
+          <p>Version 3.3 and earlier use osu! stable. The 3.4 preview adds a Game client choice for stable or native osu!lazer, with the same search, previews, filters and downloads. Linux stable integrates with <a href="https://github.com/NelloKudo/osu-winello">osu-winello</a>. See the <a href="https://github.com/tempted14/osuflow/blob/v3.4.0/docs/client-setup.md">setup guide and testing limits</a>.</p>
         </details>
         <details>
           <summary>Is it safe? Why does Windows warn me?</summary>
@@ -205,11 +205,12 @@
     <section class="section" id="download">
       <div class="wrap">
         <h2>Download</h2>
-        <p>Free and open source. The normal Windows installer is about <span class="js-size">2 MB</span> and installs for your user only, with no administrator rights needed.</p>
+        <p>Free and open source. The latest Windows installer is about <span class="js-size">2 MB</span> and installs for your user only, with no administrator rights needed.</p>
         <p class="cta">
-          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download <span class="js-version">v3.3.0</span> for Windows</a>
+          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/tag/v3.4.0">Download <span class="js-version">v3.4.0</span> for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow/releases">All releases</a>
         </p>
+        <p class="note">Version 3.4.0 adds a choice of osu! stable or osu!lazer. Lazer imports and Linux/macOS support are experimental; real-game testing is still pending.</p>
         <section class="preview-downloads" id="experimental-downloads" hidden aria-label="Experimental platform downloads">
           <h3>Experimental builds <span class="js-preview-version"></span></h3>
           <p>Linux AppImage and Debian packages, with a choice of osu! stable through osu-winello or native osu!lazer. Real-game testing is still pending. These builds are unsigned.</p>
@@ -220,7 +221,7 @@
             <a class="btn btn-plain js-macos-arm" hidden>macOS Apple Silicon preview</a>
             <a class="btn btn-plain js-macos-intel" hidden>macOS Intel preview</a>
           </div>
-          <p class="note"><a class="js-preview-release" href="https://github.com/tempted14/osuflow/releases">Preview notes and SHA-256 checksums</a> · <a href="https://github.com/tempted14/osuflow/blob/main/docs/client-setup.md">Setup and limitations</a>. Linux AppImage: make it executable before opening. Debian packages use your package manager. macOS: allow a trusted download under Privacy &amp; Security → Open Anyway.</p>
+          <p class="note"><a class="js-preview-release" href="https://github.com/tempted14/osuflow/releases">Preview notes and SHA-256 checksums</a> · <a href="https://github.com/tempted14/osuflow/blob/v3.4.0/docs/client-setup.md">Setup and limitations</a>. Linux AppImage: make it executable before opening. Debian packages use your package manager. macOS: allow a trusted download under Privacy &amp; Security → Open Anyway.</p>
         </section>
         <p class="note">To check your download, run <code>Get-FileHash .\osu.flow_*_x64-setup.exe</code> in PowerShell and compare it with the SHA-256 in the release notes.</p>
       </div>

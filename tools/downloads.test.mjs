@@ -8,8 +8,8 @@ const file = (name, tag) => ({ name, size: 2097152, browser_download_url: `https
 const stable = { tag_name: 'v3.3.0', draft: false, prerelease: false, assets: [file('osu.flow_3.3.0_x64-setup.exe', 'v3.3.0')] };
 const preview = { tag_name: 'v3.4.0', draft: false, prerelease: true, assets: [file('osu.flow_3.4.0_x64-setup.exe', 'v3.4.0'), file('osu.flow_3.4.0_amd64.AppImage', 'v3.4.0'), file('osu.flow_3.4.0_amd64.deb', 'v3.4.0'), file('osu.flow_3.4.0_aarch64.dmg', 'v3.4.0'), file('osu.flow_3.4.0_x64.dmg', 'v3.4.0')] };
 async function run(latest, list, offline = false) {
-  const nodes = Object.fromEntries(selectors.map((selector) => [selector, [{ hidden: true, textContent: '', href: 'https://github.com/tempted14/osuflow/releases/latest' }]]));
-  nodes['.js-version'][0].textContent = 'v3.3.0';
+  const nodes = Object.fromEntries(selectors.map((selector) => [selector, [{ hidden: true, textContent: '', href: 'https://github.com/tempted14/osuflow/releases/tag/v3.4.0' }]]));
+  nodes['.js-version'][0].textContent = 'v3.4.0';
   const section = { hidden: true };
   vm.runInNewContext(source, {
     URL, encodeURIComponent,
@@ -23,11 +23,11 @@ let passed = 0;
 function check(name, test) { assert.ok(test, name); console.log(`PASS ${name}`); passed++; }
 
 const both = await run(stable, [preview, stable]);
-check('normal Windows installer stays on the stable release', both.node('a.js-download').href.includes('/v3.3.0/'));
-check('normal version stays independent from preview version', both.node('.js-version').textContent === 'v3.3.0' && both.node('.js-preview-version').textContent === 'v3.4.0');
+check('primary Windows installer uses the newest version including published previews', both.node('a.js-download').href.includes('/v3.4.0/'));
+check('primary Windows and Linux versions show the newest build', both.node('.js-version').textContent === 'v3.4.0' && both.node('.js-preview-version').textContent === 'v3.4.0');
 check('published Linux preview is discoverable even though latest excludes prereleases', !both.section.hidden);
 check('Linux AppImage and deb point to their own assets', both.node('.js-linux-appimage').href.endsWith('.AppImage') && both.node('.js-linux-deb').href.endsWith('.deb'));
-check('Windows client preview is offered separately', !both.node('.js-preview-windows').hidden && both.node('.js-preview-windows').href.includes('/v3.4.0/'));
+check('same-version Windows preview is not duplicated', both.node('.js-preview-windows').hidden);
 check('Mac architectures are separate', both.node('.js-macos-arm').href.endsWith('aarch64.dmg') && both.node('.js-macos-intel').href.endsWith('x64.dmg'));
 
 const old = await run(stable, [stable]);
@@ -35,12 +35,16 @@ check('no Linux button before an asset exists', old.section.hidden && old.node('
 const draft = await run(stable, [{ ...preview, draft: true }, stable]);
 check('draft builds are never advertised', draft.section.hidden);
 const broken = await run(null, null, true);
-check('offline lookup preserves the releases fallback', broken.node('a.js-download').href.endsWith('/releases/latest') && broken.section.hidden);
+check('offline lookup preserves the newest pinned release instead of old stable', broken.node('a.js-download').href.endsWith('/releases/tag/v3.4.0') && broken.node('.js-version').textContent === 'v3.4.0' && broken.section.hidden);
 const invalid = await run(stable, [{ ...preview, assets: preview.assets.map((asset) => ({ ...asset, browser_download_url: 'javascript:alert(1)' })) }]);
 check('unsafe download URLs are rejected', invalid.section.hidden);
 const foreign = await run(stable, [{ ...preview, assets: preview.assets.map((asset) => ({ ...asset, browser_download_url: 'https://github.com/someone/else/releases/download/v1/file.AppImage' })) }]);
 check('another repository cannot supply the installer', foreign.section.hidden);
 const current = await run({ ...preview, prerelease: false }, [{ ...preview, prerelease: false }]);
 check('a future stable release keeps Linux alongside Windows', !current.section.hidden && current.node('a.js-download').href.includes('/v3.4.0/'));
-check('same-version Windows preview is not duplicated', current.node('.js-preview-windows').hidden);
+check('same-version stable Windows is not duplicated', current.node('.js-preview-windows').hidden);
+const windowsOnly = {...stable,tag_name:'v3.5.0',assets:[file('osu.flow_3.5.0_x64-setup.exe','v3.5.0')]};
+const different = await run(windowsOnly,[windowsOnly,preview,stable]);
+check('a newer Windows release does not hide the available Linux build', different.node('a.js-download').href.includes('/v3.5.0/') && different.node('.js-linux-appimage').href.includes('/v3.4.0/'));
+check('a matching Windows preview is separate when Linux has a different version', !different.node('.js-preview-windows').hidden && different.node('.js-preview-windows').href.includes('/v3.4.0/'));
 console.log(`${passed} download-selection checks passed`);

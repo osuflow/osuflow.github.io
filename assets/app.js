@@ -2,18 +2,37 @@
 (() => {
   "use strict";
 
-  // The latest version and a direct download link. The page works without this: the buttons already point at the releases page.
-  fetch("https://api.github.com/repos/tempted14/osuflow/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
-    .then((response) => (response.ok ? response.json() : null))
-    .then((release) => {
-      if (!release || !Array.isArray(release.assets)) return;
-      const installer = release.assets.find((asset) => /x64-setup\.exe$/i.test(asset.name));
-      if (release.tag_name) document.querySelectorAll(".js-version").forEach((el) => (el.textContent = release.tag_name));
-      if (!installer) return;
-      document.querySelectorAll("a.js-download").forEach((a) => (a.href = installer.browser_download_url));
-      document.querySelectorAll(".js-size").forEach((el) => (el.textContent = `${(installer.size / 1048576).toFixed(1)} MB`));
-    })
-    .catch(() => undefined);
+  // Keep the normal Windows release separate from optional Linux/client previews.
+  const api = "https://api.github.com/repos/tempted14/osuflow/releases";
+  const validAsset = (asset) => {
+    if (!asset || typeof asset.name !== "string" || typeof asset.browser_download_url !== "string" || !(asset.size > 0)) return false;
+    try { const url = new URL(asset.browser_download_url); return url.protocol === "https:" && url.hostname === "github.com" && url.pathname.startsWith("/tempted14/osuflow/releases/download/"); } catch { return false; }
+  };
+  const asset = (release, pattern) => Array.isArray(release?.assets) ? release.assets.find((item) => validAsset(item) && pattern.test(item.name)) : null;
+  const json = (url) => fetch(url, { headers: { Accept: "application/vnd.github+json" } }).then((response) => response.ok ? response.json() : null).catch(() => null);
+  const latest = json(api + "/latest");
+  latest.then((release) => {
+    if (!release || release.draft || release.prerelease) return;
+    const installer = asset(release, /x64-setup\.exe$/i);
+    if (!installer) return;
+    if (typeof release.tag_name === "string") document.querySelectorAll(".js-version").forEach((el) => { el.textContent = release.tag_name; });
+    document.querySelectorAll("a.js-download").forEach((link) => { link.href = installer.browser_download_url; });
+    document.querySelectorAll(".js-size").forEach((el) => { el.textContent = (installer.size / 1048576).toFixed(1) + " MB"; });
+  });
+  Promise.all([latest, json(api + "?per_page=10")]).then(([stable, releases]) => {
+    const candidates = [...(Array.isArray(releases) ? releases : []), stable].filter((release) => release && !release.draft && !release.isDraft);
+    const release = candidates.find((release) => asset(release, /(?:amd64|x86_64)\.AppImage$/i) || asset(release, /amd64\.deb$/i));
+    if (!release) return; // No Linux buttons until an actual published asset exists.
+    const show = (selector, found) => document.querySelectorAll(selector).forEach((link) => { if (found) { link.href = found.browser_download_url; link.hidden = false; } });
+    show('.js-linux-appimage', asset(release, /(?:amd64|x86_64)\.AppImage$/i));
+    show('.js-linux-deb', asset(release, /amd64\.deb$/i));
+    if (release.tag_name !== stable?.tag_name) show('.js-preview-windows', asset(release, /x64-setup\.exe$/i));
+    show('.js-macos-arm', asset(release, /(?:aarch64|arm64)\.dmg$/i));
+    show('.js-macos-intel', asset(release, /x64\.dmg$/i));
+    document.querySelectorAll('.js-preview-version').forEach((el) => { el.textContent = typeof release.tag_name === "string" ? release.tag_name : ""; });
+    document.querySelectorAll('.js-preview-release').forEach((link) => { link.href = "https://github.com/tempted14/osuflow/releases/tag/" + encodeURIComponent(release.tag_name); });
+    document.getElementById('experimental-downloads').hidden = false;
+  }).catch(() => undefined);
 
   // Demo: rest the pointer on a map and press Enter.
   const demo = document.getElementById("demo");

@@ -531,3 +531,9 @@ kbd {
     display: none;
   }
 }
+
+[hidden] { display: none !important; }
+.preview-downloads { margin-top: 24px; padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); }
+.preview-downloads h3 { margin: 0 0 8px; font-size: 1.1rem; line-height: 1.3; }
+.platform-downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+.preview-downloads .note { margin-top: 12px; }

@@ -64,7 +64,7 @@
           <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow">Source on GitHub</a>
         </p>
-        <p class="meta"><span class="js-version">v3.2.0</span> · Windows 10 and 11 · <span class="js-size">1.9 MB</span> · free, MIT licence · no account needed</p>
+        <p class="meta"><span class="js-version">v3.3.0</span> · Windows 10 and 11 · <span class="js-size">1.9 MB</span> · free, MIT licence · no account needed</p>
         <figure class="shot">
           <img src="assets/img/app-overlay.webp" width="1180" height="760" alt="The osu!flow search card over osu!: a list of maps with cover art, difficulty dots and a download button. One map is highlighted under the pointer, with a hint reading Enter, download. Space, preview." fetchpriority="high" />
         </figure>
@@ -173,7 +173,7 @@
         <h2>FAQ</h2>
         <details>
           <summary>Does it work with osu!lazer?</summary>
-          <p>No. osu!flow is built for osu! (stable), the classic client.</p>
+          <p>Version 3.3 and earlier use osu! stable. The 3.4 preview adds a Game client choice for stable or native osu!lazer, with the same search, previews, filters and downloads. Linux stable integrates with <a href="https://github.com/NelloKudo/osu-winello">osu-winello</a>. See the <a href="https://github.com/tempted14/osuflow/blob/main/docs/client-setup.md">setup guide and testing limits</a>.</p>
         </details>
         <details>
           <summary>Is it safe? Why does Windows warn me?</summary>
@@ -205,11 +205,23 @@
     <section class="section" id="download">
       <div class="wrap">
         <h2>Download</h2>
-        <p>Free and open source, about <span class="js-size">2 MB</span>. It installs for your user only, so no administrator rights are needed.</p>
+        <p>Free and open source. The normal Windows installer is about <span class="js-size">2 MB</span> and installs for your user only, with no administrator rights needed.</p>
         <p class="cta">
-          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download <span class="js-version">v3.2.0</span> for Windows</a>
+          <a class="btn js-download" href="https://github.com/tempted14/osuflow/releases/latest">Download <span class="js-version">v3.3.0</span> for Windows</a>
           <a class="btn btn-plain" href="https://github.com/tempted14/osuflow/releases">All releases</a>
         </p>
+        <section class="preview-downloads" id="experimental-downloads" hidden aria-label="Experimental platform downloads">
+          <h3>Experimental builds <span class="js-preview-version"></span></h3>
+          <p>Linux AppImage and Debian packages, with a choice of osu! stable through osu-winello or native osu!lazer. Real-game testing is still pending. These builds are unsigned.</p>
+          <div class="platform-downloads">
+            <a class="btn js-linux-appimage" hidden>Linux AppImage · x64</a>
+            <a class="btn btn-plain js-linux-deb" hidden>Linux .deb · x64</a>
+            <a class="btn btn-plain js-preview-windows" hidden>Windows client preview</a>
+            <a class="btn btn-plain js-macos-arm" hidden>macOS Apple Silicon preview</a>
+            <a class="btn btn-plain js-macos-intel" hidden>macOS Intel preview</a>
+          </div>
+          <p class="note"><a class="js-preview-release" href="https://github.com/tempted14/osuflow/releases">Preview notes and SHA-256 checksums</a> · <a href="https://github.com/tempted14/osuflow/blob/main/docs/client-setup.md">Setup and limitations</a>. Linux AppImage: make it executable before opening. Debian packages use your package manager. macOS: allow a trusted download under Privacy &amp; Security → Open Anyway.</p>
+        </section>
         <p class="note">To check your download, run <code>Get-FileHash .\osu.flow_*_x64-setup.exe</code> in PowerShell and compare it with the SHA-256 in the release notes.</p>
       </div>
     </section>
@@ -225,7 +237,7 @@
         <a href="https://github.com/tempted14/osuflow#code-signing-policy">Code signing policy</a>
         <a href="https://github.com/tempted14/osuflow#privacy">Privacy</a>
       </p>
-      <p class="legal">osu!flow is an independent project, not affiliated with or endorsed by ppy Pty Ltd. Cover art, titles and artists in screenshots belong to their respective owners (ppy, mappers, artists); osu!flow includes none of them. This page sets no cookies and has no trackers; its only request is to GitHub's public API, to show the latest version number.</p>
+      <p class="legal">osu!flow is an independent project, not affiliated with or endorsed by ppy Pty Ltd. Cover art, titles and artists in screenshots belong to their respective owners (ppy, mappers, artists); osu!flow includes none of them. This page sets no cookies and has no trackers; its only outside requests are to GitHub's public API, to show available versions and downloads.</p>
     </div>
   </footer>
 
